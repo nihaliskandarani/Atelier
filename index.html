@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>N² Void Atelier</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+/* ===== ROOT ===== */
+:root{
+  --void-black:#0a0a0d;
+  --void-purple:#9d4edd;
+  --void-pink:#ff5da2;
+  --void-glow:rgba(157,78,221,.35);
+  --nova-star1:#ff00c8;
+  --nova-star2:#b30086;
+  --nova-star3:#fc90c4;
+}
+
+/* ===== GLOBAL ===== */
+body {
+  background: radial-gradient(circle at center, #0a0a0d 0%, #1a0a30 50%, #000000 100%);
+  color: #eee;
+  font-family:system-ui,-apple-system,Segoe UI,sans-serif;
+  overflow-x:hidden;
+}
+
+/* ===== NAV ===== */
+.navbar{
+  backdrop-filter: blur(12px);
+  box-shadow:0 10px 40px rgba(0,0,0,.8);
+}
+
+/* ===== HERO ===== */
+#hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+/* Hero background gradient */
+.hero-bg {
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0; left:0;
+  background: linear-gradient(135deg, #1f0037, #4b006b, #53082d, #9d4edd);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
+  z-index:-2;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+#hero-title {
+  font-size: 4rem;
+  letter-spacing: .25rem;
+  font-weight: 900;
+  color: var(--nova-star1); 
+
+ 
+  text-shadow:
+     0 0 5px var(--nova-star1),
+     0 0 10px var(--nova-star2),
+     0 0 20px var(--nova-star3),
+     0 0 30px rgba(157, 78, 221, 0.35); 
+
+  /* subtle neon pulse */
+  animation: neonPulseAlt 2.5s ease-in-out infinite alternate;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes neonPulseAlt {
+  from {
+    text-shadow:
+      0 0 3px var(--nova-star1),
+      0 0 7px var(--nova-star2),
+      0 0 15px var(--nova-star3),
+      0 0 25px rgba(157, 78, 221, 0.2);
+  }
+  to {
+    text-shadow:
+      0 0 8px var(--nova-star1),
+      0 0 18px var(--nova-star2),
+      0 0 35px var(--nova-star3),
+      0 0 50px rgba(157, 78, 221, 0.3);
+  }
+}
+
+
+
+/* Canvas overlay */
+#hero-particles {
+  position:absolute;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
+
+
+
+
+/* Hero Title Neon Glow */
+#hero-title {
+     letter-spacing:.25rem;
+     font-size:4rem;
+  color: #f378d8; /* main neon pink */
+  text-shadow:
+     0 0 5px #ff00c8,
+     0 0 10px #ff00c8,
+     0 0 20px #b30086,
+     0 0 30px #b30086,
+     0 0 40px #ff5da2,
+     0 0 60px #ff5da2;
+  animation: neonPulse 2s ease-in-out infinite alternate;
+}
+
+/* Neon pulse animation */
+@keyframes neonPulse {
+  from {
+    text-shadow:
+      0 0 5px #ff00c8,
+      0 0 10px #ff00c8,
+      0 0 20px #b30086,
+      0 0 30px #b30086,
+      0 0 40px #ff5da2,
+      0 0 60px #ff5da2;
+  }
+  to {
+    text-shadow:
+      0 0 15px #ff00c8,
+      0 0 25px #ff00c8,
+      0 0 40px #b30086,
+      0 0 50px #b30086,
+      0 0 60px #ff5da2,
+      0 0 100px #ff5da2;
+  }
+}
+
+/* Hero product cards */
+.hero-product-card {
+  width: 180px;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.4s, box-shadow 0.4s;
+  cursor: pointer;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+}
+.hero-product-card img {
+  border-radius: 20px;
+  transition: transform 0.4s;
+}
+.hero-product-card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px var(--nova-star1), 0 0 45px var(--nova-star2);
+}
+.hero-product-card:hover img {
+  transform: scale(1.04);
+}
+.text-neon {
+  color: #f378d8; /* main neon pink */
+  text-shadow: 0 0 8px var(--nova-star1), 0 0 16px var(--nova-star2);
+}
+
+/* ===== STORE SECTIONS ===== */
+.store-section{
+  padding:100px 0;
+}
+.section-title{
+  text-align:center;
+  margin-bottom:60px;
+  text-transform:uppercase;
+  letter-spacing:.3rem;
+  opacity:.85;
+}
+
+/* ===== STORE CARDS ===== */
+.store-item{
+  background:rgba(255,255,255,.03);
+  border-radius:18px;
+  padding:30px;
+  height:100%;
+  transition:.4s ease;
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.7),
+    inset 0 0 0 rgba(255,255,255,0);
+}
+.store-item:hover{
+  transform:translateY(-8px);
+  box-shadow:
+    0 25px 60px rgba(157,78,221,.35),
+    inset 0 0 30px rgba(255,255,255,.05);
+}
+
+/* ===== BUTTONS ===== */
+.btn-void{
+  background:linear-gradient(135deg,var(--void-purple),var(--void-pink));
+  border:none;
+  color:white;
+  box-shadow:0 10px 30px rgba(157,78,221,.5);
+}
+.btn-void:hover{
+  box-shadow:0 0 40px rgba(255,93,162,.7);
+}
+
+/* ===== PRICE ===== */
+.price{
+  font-size:1.2rem;
+  opacity:.85;
+}
+
+
+
+
+</style>
+</head>
+
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="navbar navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">N² VOID ATELIER</a>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section id="hero" class="position-relative overflow-hidden">
+  <div class="hero-bg"></div>
+  <canvas id="hero-particles"></canvas>
+  <div class="container h-100 d-flex flex-column justify-content-center align-items-center text-center text-light">
+    <h1 id="hero-title">Void Atelier</h1>
+    <p class="fs-4 mb-5">Hybrid Design, Pure Nova Energy</p>
+    <div class="d-flex gap-4 flex-wrap justify-content-center">
+      <div class="hero-product-card shadow-lg">
+        <img src="./images/crystal.png" alt="Product 1" class="img-fluid">
+        <h5 class="mt-2 text-neon">Nova Crystal</h5>
+      </div>
+      <div class="hero-product-card shadow-lg">
+        <img src="./images/serum1.png" alt="Product 2" class="img-fluid">
+        <h5 class="mt-2 text-neon">Quantum Serum</h5>
+      </div>
+      <div class="hero-product-card shadow-lg">
+        <img src="./images/serum2.png" alt="Product 3" class="img-fluid">
+        <h5 class="mt-2 text-neon">Lumina Oil</h5>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCTS ===== -->
+<section class="store-section" id="products">
+  <div class="container">
+    <h2 class="section-title">Products</h2>
+    <div class="row g-4">
+
+      <div class="col-md-4">
+        <div class="store-item" data-id="p1" data-type="product" data-name="Void Scent" data-price="89">
+            <img src="./images/1.png" alt="Product 4" class="img-fluid">
+          <h5 class="product-title" style="color: var(--void-purple)">Void Scent</h5>
+          <p class="opacity-75">Dark amber · smoke · skin memory</p>
+          <div class="price">$89</div>
+          <button class="btn btn-void w-100 mt-3 lux-add-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="store-item" data-id="p2" data-type="product" data-name="Obsidian Candle" data-price="55">
+         <img src="./images/2.png" alt="Product 5" class="img-fluid">
+            <h5 class="product-title" style="color: var(--void-pink)">Obsidian Candle</h5>
+          <p class="opacity-75">Slow burn · grounding</p>
+          <div class="price">$55</div>
+          <button class="btn btn-void w-100 mt-3 lux-add-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="store-item" data-id="p3" data-type="product" data-name="Quantum Jar" data-price="150">
+          <img src="./images/3.png" alt="Product 6" class="img-fluid">
+            <h5 class="product-title" style="color: var(--void-purple)">Quantum Jar</h5>
+          <p class="opacity-75">A vortex of light · dynamic aura</p>
+          <div class="price">$150</div>
+          <button class="btn btn-void w-100 mt-3 lux-add-btn">Add to Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="store-section" id="services">
+  <div class="container">
+    <h2 class="section-title">Services</h2>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="store-item" data-id="s1" data-type="service" data-name="Void Consultation" data-price="120">
+          <h5>Void Consultation</h5>
+          <p class="opacity-75">One-on-one clarity session. Identity · direction · silence.</p>
+          <div class="price">$120</div>
+          <button class="btn btn-void w-100 mt-3 lux-add-btn">Book Session</button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="store-item" data-id="s2" data-type="service" data-name="Atelier Curation" data-price="300">
+          <h5>Atelier Curation</h5>
+          <p class="opacity-75">Custom digital / brand curation crafted from zero.</p>
+          <div class="price">$300</div>
+          <button class="btn btn-void w-100 mt-3 lux-add-btn">Request</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+</body>
+</html>
+
