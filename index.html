@@ -111,9 +111,13 @@
         z-index: -1;
       }
 
-      /* Hero product cards */
+ 
 
       .hero-product-card {
+        
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
         width: 180px;
         border-radius: 20px;
         transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -343,20 +347,33 @@ footer a:hover {
         margin-bottom: 16px;
       }
 
-      .qty-btn {
-        width: 34px;
-        height: 34px;
-        border-radius: 50%;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        background: transparent;
-        color: white;
+ .qty-btn {
+  all: unset;                  /* removes all default button styles */
+  box-sizing: border-box;      
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-        box-shadow: 0 0 8px rgba(157, 78, 221, 0.8),
-          0 0 20px rgba(174, 111, 224, 0.6), 0 0 40px rgba(174, 111, 224, 0.5),
-          0 0 80px rgba(157, 78, 221, 0.4);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  color: white;
 
-        transition: box-shadow 0.3s ease;
-      }
+  font-size: 1rem;
+  line-height: 1;
+  text-align: center;
+
+  box-shadow: 0 0 8px rgba(157, 78, 221, 0.8),
+              0 0 20px rgba(174, 111, 224, 0.6),
+              0 0 40px rgba(174, 111, 224, 0.5),
+              0 0 80px rgba(157, 78, 221, 0.4);
+
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
 
       .qty-number {
         min-width: 38px;
@@ -554,7 +571,7 @@ footer a:hover {
               class="store-item hero-product-card shadow-lg"
               data-id="p1"
               data-type="product"
-              data-name="Nova Crystal"
+              data-name="Nova  Crystal"
               data-price="199"
             >
               <img
@@ -562,7 +579,7 @@ footer a:hover {
                 alt="Product 1"
                 class="img-fluid"
               />
-              <h5 class="mt-2 text-neon">Nova Crystal</h5>
+              <h5 class="mt-2 text-neon"  style="font-size: 17px;">Nova Crystal</h5>
               <div class="price">$199</div>
               <div class="lux-qty-wrapper mt-3">
                 <button class="qty-btn minus">−</button>
@@ -587,7 +604,7 @@ footer a:hover {
                 alt="Product 2"
                 class="img-fluid"
               />
-              <h5 class="mt-2 text-neon">Quantum Serum</h5>
+              <h5 class="mt-2 text-neon " style="font-size: 17px;">Quantum Serum</h5>
               <div class="price">$99</div>
               <div class="lux-qty-wrapper mt-3">
                 <button class="qty-btn minus">−</button>
@@ -612,7 +629,7 @@ footer a:hover {
                 alt="Product 3"
                 class="img-fluid"
               />
-              <h5 class="mt-2 text-neon">Lumina Oil</h5>
+              <h5 class="mt-2 text-neon "  style="font-size: 17px;">Lumina Oil</h5>
               <div class="price">$77</div>
               <div class="lux-qty-wrapper mt-3">
                 <button class="qty-btn minus">−</button>
