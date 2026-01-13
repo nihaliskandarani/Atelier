@@ -83,11 +83,8 @@
         letter-spacing: 0.25rem;
         font-weight: 900;
         color: #deccf7; /* luminous base violet */
-        text-shadow: 0 0 5px #a259ff,
-           0 0 15px #6d00b3,
-          0 0 30px #b08fff,
-           0 0 50px rgba(157, 78, 221, 0.25),
-         0 0 80px rgba(157, 78, 221, 0.15); 
+        text-shadow: 0 0 5px #a259ff, 0 0 15px #6d00b3, 0 0 30px #b08fff,
+          0 0 50px rgba(157, 78, 221, 0.25), 0 0 80px rgba(157, 78, 221, 0.15);
         animation: neonPulseAlt 3s ease-in-out infinite alternate;
         position: relative;
         z-index: 2;
@@ -117,20 +114,17 @@
       /* Hero product cards */
 
       .hero-product-card {
-
- width: 180px;
-         border-radius: 20px;
+        width: 180px;
+        border-radius: 20px;
         transition: transform 0.4s ease, box-shadow 0.4s ease;
         cursor: pointer;
         background: rgba(20, 10, 35, 0.55);
         backdrop-filter: blur(14px);
         box-shadow: 0 0 20px rgba(157, 78, 221, 0.25),
-          0 0 40px rgba(157, 78, 221, 0.15)!important;
+          0 0 40px rgba(157, 78, 221, 0.15) !important;
         overflow: hidden;
-        
-
       }
-       
+
       .hero-product-card img {
         border-radius: 20px;
         transition: transform 0.4s;
@@ -139,7 +133,7 @@
       .hero-product-card:hover {
         transform: scale(1.07);
         box-shadow: 0 0 35px rgba(157, 78, 221, 0.45),
-          0 0 70px rgba(157, 78, 221, 0.3), 0 0 120px rgba(157, 78, 221, 0.2)!important;
+          0 0 70px rgba(157, 78, 221, 0.3), 0 0 120px rgba(157, 78, 221, 0.2) !important;
       }
 
       .hero-product-card:hover img {
@@ -223,8 +217,8 @@
         position: fixed;
         top: 57px;
         right: 0px;
-        width: 380px; 
-        max-height: auto; 
+        width: 380px;
+        max-height: auto;
         height: auto;
         background: rgba(10, 10, 13, 0.95);
         backdrop-filter: blur(15px);
@@ -232,7 +226,7 @@
         box-shadow: 0 0 20px var(--void-purple), 0 0 40px var(--void-pink),
           0 0 60px rgba(157, 78, 221, 0.3);
         color: #eee;
-        overflow: hidden; 
+        overflow: hidden;
         transform: translateY(-20px);
         opacity: 0;
         transition: transform 0.4s ease, opacity 0.4s ease;
@@ -336,9 +330,8 @@
         color: white;
 
         box-shadow: 0 0 8px rgba(157, 78, 221, 0.8),
-           0 0 20px rgba(174, 111, 224, 0.6),
-           0 0 40px rgba(174, 111, 224, 0.5),
-           0 0 80px rgba(157, 78, 221, 0.4); 
+          0 0 20px rgba(174, 111, 224, 0.6), 0 0 40px rgba(174, 111, 224, 0.5),
+          0 0 80px rgba(157, 78, 221, 0.4);
 
         transition: box-shadow 0.3s ease;
       }
@@ -354,9 +347,8 @@
         align-items: center;
         justify-content: center;
         box-shadow: 0 0 8px rgba(157, 78, 221, 0.8),
-           0 0 20px rgba(174, 111, 224, 0.6),
-          0 0 40px rgba(174, 111, 224, 0.5),
-           0 0 80px rgba(157, 78, 221, 0.4); 
+          0 0 20px rgba(174, 111, 224, 0.6), 0 0 40px rgba(174, 111, 224, 0.5),
+          0 0 80px rgba(157, 78, 221, 0.4);
       }
 
       /* hero prod btns */
@@ -428,6 +420,91 @@
       .btn-void2.pulse {
         animation: voidPulse 3s ease-in-out infinite;
       }
+
+      /* js animation */
+
+      /* //cartbump */
+      @keyframes cartBump {
+        0% {
+          transform: scale(1);
+        }
+        30% {
+          transform: scale(1.15);
+        }
+        60% {
+          transform: scale(0.95);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .cart-bump {
+        animation: cartBump 0.35s ease;
+      }
+
+      @keyframes cartGlow {
+        0% {
+          box-shadow: 0 0 0 rgba(157, 78, 221, 0);
+        }
+        50% {
+          box-shadow: 0 0 25px rgba(157, 78, 221, 0.9);
+        }
+        100% {
+          box-shadow: 0 0 0 rgba(157, 78, 221, 0);
+        }
+      }
+
+      /* it was supposed to be a flying butterly that ended up being a sparkle */
+      .void-butterfly {
+        position: fixed;
+        font-size: 28px;
+        pointer-events: none;
+        z-index: 9999;
+
+        animation: butterflyFly 1.6s ease-out forwards;
+      }
+
+      @keyframes butterflyFly {
+        0% {
+          transform: translate(-50%, 0) scale(0.8) rotate(0deg);
+          opacity: 0;
+        }
+        20% {
+          opacity: 1;
+        }
+        60% {
+          transform: translate(-60px, -120px) scale(1.2) rotate(15deg);
+        }
+        100% {
+          transform: translate(120px, -260px) scale(0.6) rotate(-20deg);
+          opacity: 0;
+        }
+      }
+
+      /* shake on invalid entry */
+      @keyframes shake {
+        0% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-4px);
+        }
+        50% {
+          transform: translateX(4px);
+        }
+        75% {
+          transform: translateX(-4px);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      .shake {
+        animation: shake 0.3s ease;
+        border-color: #ff4d6d;
+      }
     </style>
   </head>
 
@@ -448,6 +525,7 @@
       >
         <h1 id="hero-title">Void Atelier</h1>
         <p class="fs-4 mb-5">Hybrid Design, Pure Nova Energy</p>
+
         <div class="d-flex gap-4 flex-wrap justify-content-center">
           <div class="d-flex justify-content-center">
             <div
@@ -474,7 +552,7 @@
               </button>
             </div>
           </div>
-          <div class=" d-flex justify-content-center">
+          <div class="d-flex justify-content-center">
             <div
               class="store-item hero-product-card shadow-lg"
               data-id="p2"
@@ -706,10 +784,8 @@
         </div>
         <button id="empty-cart" class="btn btn-void w-100 mt-3">
           Empty Cart
-        </button> <button  class="btn btn-void w-100 mt-3">
-          Checkout
         </button>
-
+        <button class="btn btn-void w-100 mt-3">Checkout</button>
       </div>
     </div>
 
@@ -798,7 +874,19 @@
             edit.replaceChild(saveBtn, editBtn);
 
             saveBtn.addEventListener("click", () => {
-              item.quantity = parseInt(qtyInput.value);
+              const newQty = parseInt(qtyInput.value, 10);
+
+              // validation
+              if (!Number.isInteger(newQty) || newQty < 1) {
+                qtyInput.classList.add("shake");
+                setTimeout(() => qtyInput.classList.remove("shake"), 300);
+
+                qtyInput.value = item.quantity; // revert to last valid value
+                return;
+              }
+
+              // update cart
+              item.quantity = newQty;
 
               save();
               UpdateCount();
@@ -829,12 +917,30 @@
         });
         save();
         UpdateCount();
+        calculateTotal();
       }
 
       //add to cart button
       const AddtoCartBtn = document.querySelectorAll(".lux-add-btn");
       AddtoCartBtn.forEach((btn) => {
         btn.addEventListener("click", () => {
+          const butterfly = document.createElement("span");
+          butterfly.className = "void-butterfly";
+          butterfly.textContent = "✨";
+
+          const rect = btn.getBoundingClientRect();
+          butterfly.style.left = rect.left + rect.width / 2 + "px";
+          butterfly.style.top = rect.top + "px";
+
+          document.body.appendChild(butterfly);
+
+          butterfly.addEventListener("animationend", () => butterfly.remove());
+
+          // CART bump animation
+          cartBtn.classList.remove("cart-bump");
+          cartBtn.offsetWidth; // force reflow
+          cartBtn.classList.add("cart-bump");
+
           const card = btn.closest(".store-item");
           const qtyNumber = card.querySelector(".qty-number");
           let qty = parseInt(qtyNumber.textContent);
@@ -860,11 +966,33 @@
               price,
             });
           }
-          save();
-          UpdateCount();
+
           renderCart();
+
+          // RESET PRODUCT QTY UI
+          qtyNumber.textContent = 1;
         });
       });
+
+      //total price
+
+      const subtotalEl = document.getElementById("cart-sub-price");
+      const totalEl = document.getElementById("cart-total-price");
+      const vatEl = document.getElementById("cart-vat");
+
+      function calculateTotal() {
+        let subtotal = 0;
+
+        cart.forEach((item) => {
+          subtotal += Number(item.price) * Number(item.quantity);
+        });
+        const vat = subtotal * 0.11;
+        const total = subtotal + vat;
+
+        subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+        vatEl.textContent = `$${vat.toFixed(2)}`;
+        totalEl.textContent = `$${total.toFixed(2)}`;
+      }
 
       //update cart count
 
@@ -877,6 +1005,21 @@
         });
         cartCount.textContent = total;
       }
+
+      //empty cart
+
+      const emptyCart = document.getElementById("empty-cart");
+      emptyCart.addEventListener("click", () => {
+        cart = [];
+        save();
+        UpdateCount();
+        renderCart();
+      });
+
+      //page load
+      document.addEventListener("DOMContentLoaded", () => {
+        renderCart();
+      }); //When the page loads, take what’s already in cart[] and display it.
 
       // Floating Cart toggle
       const cartBtn = document.getElementById("cart-btn");
@@ -893,7 +1036,10 @@
       // Open cart when Add to Cart clicked
       document.querySelectorAll(".lux-add-btn").forEach((btn) => {
         btn.addEventListener("click", () => {
-          floatingCart.classList.add("open");
+          if (window.innerWidth > 768) {
+  floatingCart.classList.add("open");
+}
+
         });
       });
 
