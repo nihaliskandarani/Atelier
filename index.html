@@ -198,9 +198,31 @@
 
       /* ===== FOOTER ===== */
       footer {
-        padding: 40px 0;
-        opacity: 0.6;
-      }
+  background: rgba(10, 10, 13, 0.95);
+  backdrop-filter: blur(10px);
+  color: #eee;
+  box-shadow: 0 -5px 15px rgba(157, 78, 221, 0.3);
+}
+
+footer a {
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+footer a:hover {
+  text-shadow: 0 0 8px var(--void-purple), 0 0 15px var(--void-pink);
+  transform: scale(1.05);
+}
+.designed-by {
+  font-size: 0.85rem;
+  letter-spacing: 0.1rem;
+  text-shadow: 
+    0 0 5px var(--nova-star1),
+    0 0 10px var(--nova-star2),
+    0 0 15px var(--nova-star3);
+  animation: neonPulseAlt 3s ease-in-out infinite alternate;
+}
+
 
       /* Responsive tweaks */
       @media (max-width: 768px) {
@@ -806,9 +828,20 @@
     </button>
 
     <!-- ===== FOOTER ===== -->
-    <footer class="text-center">
-      <small>© N² Void Atelier</small>
-    </footer>
+<footer class="text-center py-4">
+  <div class="footer-content">
+    <p>© N² Void Atelier</p>
+    <div class="footer-links">
+      <a href="#" class="text-neon me-3">About</a>
+      <a href="#" class="text-neon me-3">Contact</a>
+      <a href="#" class="text-neon">Privacy</a>
+    </div>
+    <p class="designed-by text-neon mt-2">
+      ✨ Designed by Nihal Iskandarani ✨
+    </p>
+  </div>
+</footer>
+
 
     <script>
       //local storage
