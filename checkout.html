@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>N² Void Atelier - Checkout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --void-black: #0a0a0d;
+        --void-purple: #9d4edd;
+        --void-pink: #ff5da2;
+        --void-glow: rgba(157, 78, 221, 0.35);
+      }
+
+      body {
+        background: radial-gradient(
+          circle at center,
+          #0a0a0d 0%,
+          #1a0a30 50%,
+          #000000 100%
+        );
+        color: #eee;
+        font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+        overflow-x: hidden;
+        padding-top: 70px;
+      }
+
+      h1,
+      h2 {
+        color: #deccf7;
+        text-shadow: 0 0 8px #a259ff, 0 0 20px #6d00b3;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .checkout-table {
+        width: 100%;
+        background: rgba(20, 10, 35, 0.55);
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 2rem;
+        box-shadow: 0 0 20px var(--void-purple), 0 0 40px var(--void-pink);
+      }
+
+      .checkout-table th,
+      .checkout-table td {
+        text-align: center;
+        padding: 12px;
+        color: #fff;
+        border-bottom: 1px solid rgba(157, 78, 221, 0.2);
+      }
+
+      .checkout-summary {
+        max-width: 400px;
+        margin: 0 auto 2rem auto;
+        background: rgba(20, 10, 35, 0.55);
+        padding: 1rem 1.5rem;
+        border-radius: 14px;
+        box-shadow: 0 0 25px var(--void-purple), 0 0 50px var(--void-pink);
+        font-size: 1.1rem;
+      }
+
+      .checkout-summary div {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.6rem;
+      }
+
+      /* Checkout Form  */
+      .checkout-form {
+        max-width: 500px;
+        margin: 0 auto 3rem auto;
+        background: rgba(20, 10, 35, 0.55);
+        padding: 2rem;
+        border-radius: 14px;
+        box-shadow: 0 0 25px var(--void-purple), 0 0 50px var(--void-pink);
+      }
+
+      .checkout-form h5 {
+        text-shadow: 0 0 10px var(--void-purple), 0 0 25px var(--void-pink);
+        color: #fff;
+        margin-bottom: 1.5rem;
+      }
+
+      .checkout-form label {
+        color: #ffccff;
+        font-weight: 500;
+        text-shadow: 0 0 5px var(--void-purple);
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      .checkout-form input {
+        width: 100%;
+        border: 1px solid rgba(157, 78, 221, 0.5);
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+        background: rgba(20, 10, 35, 0.55);
+        color: #eee;
+        border-radius: 12px;
+        box-shadow: 0 0 8px var(--void-purple), 0 0 15px var(--void-pink);
+        transition: all 0.3s ease;
+        margin-bottom: 1.5rem; 
+      }
+
+      .checkout-form input:focus {
+        border-color: var(--void-pink);
+        box-shadow: 0 0 20px var(--void-purple), 0 0 35px var(--void-pink);
+        outline: none;
+        color: #fff;
+      }
+
+      /* Buttons */
+      .checkout-form button {
+        background: linear-gradient(
+          135deg,
+          var(--void-purple),
+          var(--void-pink)
+        );
+        color: #fff;
+        font-weight: 600;
+        padding: 0.8rem 1rem;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 0 20px var(--void-purple), 0 0 40px var(--void-pink);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+
+      .checkout-form button:hover {
+        box-shadow: 0 0 35px var(--void-purple), 0 0 70px var(--void-pink);
+        transform: scale(1.02);
+      }
+
+      /*
+   Radio Buttons Styling 
+   */
+
+      .custom-radio {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        cursor: pointer;
+        color: #ffccff;
+        font-weight: 500;
+        text-shadow: 0 0 3px var(--void-purple);
+        user-select: none;
+      }
+
+      .custom-radio input {
+        display: none;
+      }
+
+      .custom-radio span {
+        display: inline-block;
+        width: 14px; 
+        height: 14px;
+        border: 2px solid var(--void-purple);
+        border-radius: 50%;
+        position: relative;
+        transition: all 0.2s ease;
+        box-sizing: border-box;
+      }
+
+      .custom-radio input:checked + span::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 10px; 
+        height: 10px;
+        background: var(--void-purple);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 6px var(--void-purple), 0 0 12px var(--void-pink);
+      }
+
+      .custom-radio span:hover {
+        box-shadow: 0 0 4px var(--void-purple);
+      }
+
+      .back-store-btn {
+        display: inline-block;
+        margin: 1.5rem auto 0 auto;
+        background: transparent;
+        border: 2px solid var(--void-purple);
+        color: #fff;
+        padding: 0.7rem 1.5rem;
+        border-radius: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        text-align: center;
+        box-shadow: 0 0 15px var(--void-purple), 0 0 30px var(--void-pink);
+        transition: all 0.3s ease;
+      }
+
+      .back-store-btn:hover {
+        background: var(--void-purple);
+        box-shadow: 0 0 25px var(--void-purple), 0 0 50px var(--void-pink);
+        transform: scale(1.05);
+        color: #fff;
+        text-decoration: none;
+      }
+
+      footer {
+        background: rgba(10, 10, 13, 0.95);
+        backdrop-filter: blur(10px);
+        color: #eee;
+        text-align: center;
+        padding: 1.5rem 0;
+        box-shadow: 0 -5px 15px rgba(157, 78, 221, 0.3);
+      }
+
+      footer .designed-by {
+        font-size: 0.85rem;
+        letter-spacing: 0.1rem;
+        margin-top: 0.5rem;
+      }
+
+      @media (max-width: 768px) {
+        .checkout-table th,
+        .checkout-table td {
+          font-size: 0.9rem;
+          padding: 8px;
+        }
+        .checkout-summary,
+        .checkout-form {
+          padding: 1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAV -->
+    <nav class="navbar navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">N² VOID ATELIER</a>
+      </div>
+    </nav>
+
+    <section class="checkout-section">
+      <div class="container">
+        <h1>Checkout</h1>
+
+        <!-- Cart Table -->
+        <table class="checkout-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Qty</th>
+              <th>Price</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody id="checkout-tbody">
+          </tbody>
+        </table>
+
+        <!-- Summary -->
+        <div class="checkout-summary">
+          <div><span>Subtotal:</span><span id="subtotal">$0.00</span></div>
+          <div><span>VAT (11%):</span><span id="vat">$0.00</span></div>
+          <div style="font-weight: bold">
+            <span>Total:</span><span id="total">$0.00</span>
+          </div>
+        </div>
+
+        <!-- Checkout Form -->
+        <div class="checkout-form">
+          <h5 class="text-center mb-4">Payment Details</h5>
+          <form id="payment-form">
+            <label for="cardholder">Cardholder Name</label>
+            <input
+              type="text"
+              id="cardholder"
+              placeholder="John Doe"
+              required
+            />
+
+            <label for="card-number">Card Number</label>
+            <input
+              type="text"
+              id="card-number"
+              placeholder="1234 5678 9012 3456"
+              maxlength="19"
+              required
+            />
+
+            <div class="row g-3">
+              <div class="col-6">
+                <label for="expiry">Expiry Date</label>
+                <input
+                  type="text"
+                  id="expiry"
+                  placeholder="MM/YY"
+                  maxlength="5"
+                  required
+                />
+              </div>
+              <div class="col-6">
+                <label for="cvv">CVV</label>
+                <input
+                  type="text"
+                  id="cvv"
+                  placeholder="123"
+                  maxlength="3"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="mt-3">
+              <label class="form-label d-block mb-2">Card Type</label>
+              <div class="d-flex gap-3 align-items-center">
+                <label class="custom-radio">
+                  <input type="radio" name="cardType" value="Visa" required />
+                  <span></span>
+                  Visa
+                </label>
+
+                <label class="custom-radio">
+                  <input type="radio" name="cardType" value="MasterCard" />
+                  <span></span>
+                  MasterCard
+                </label>
+              </div>
+            </div>
+
+            <button type="submit">Pay Now</button>
+          </form>
+
+          <a href="index.html" class="back-store-btn">← Back to Store</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© N² Void Atelier</p>
+      <p class="designed-by">✨ Designed by Nihal Iskandarani ✨</p>
+    </footer>
+
+
+  </body>
+</html>

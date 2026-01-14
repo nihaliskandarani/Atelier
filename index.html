@@ -117,7 +117,7 @@
         
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: nowrap; /* keeps it in one line, or use normal for multi-line */
         width: 180px;
         border-radius: 20px;
         transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -824,7 +824,9 @@ footer a:hover {
         <button id="empty-cart" class="btn btn-void w-100 mt-3">
           Empty Cart
         </button>
-        <button class="btn btn-void w-100 mt-3">Checkout</button>
+<button class="btn btn-void w-100 mt-3" onclick="window.location.href='checkout.html'">
+  Checkout
+</button>
       </div>
     </div>
 
