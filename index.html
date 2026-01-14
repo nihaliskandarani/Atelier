@@ -684,7 +684,7 @@ footer a:hover {
               data-price="55"
             >
               <img src="./images/2.png" alt="Product 5" class="img-fluid" />
-              <h5 class="product-title" style="color: var(--void-pink)">
+              <h5 class="product-title" style="color: var(--void-purple)">
                 Obsidian Candle
               </h5>
               <p class="opacity-75">Slow burn · grounding</p>
@@ -860,14 +860,10 @@ footer a:hover {
     </p>
   </div>
 </footer>
-
+<script src="./cart.js"></script>
 
     <script>
-      //local storage
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      function save() {
-        localStorage.setItem("cart", JSON.stringify(cart));
-      }
+    
 
       //+ - btns
       const qtyBtn = document.querySelectorAll(".qty-btn");
@@ -993,6 +989,8 @@ footer a:hover {
           cartBtn.offsetWidth; // force reflow
           cartBtn.classList.add("cart-bump");
 
+          //
+
           const card = btn.closest(".store-item");
           const qtyNumber = card.querySelector(".qty-number");
           let qty = parseInt(qtyNumber.textContent);
@@ -1026,6 +1024,12 @@ footer a:hover {
         });
       });
 
+
+
+
+
+
+/////////////////////////////////////////////////////////////////
       //total price
 
       const subtotalEl = document.getElementById("cart-sub-price");
@@ -1033,19 +1037,26 @@ footer a:hover {
       const vatEl = document.getElementById("cart-vat");
 
       function calculateTotal() {
-        let subtotal = 0;
+        // let subtotal = 0;
 
-        cart.forEach((item) => {
-          subtotal += Number(item.price) * Number(item.quantity);
-        });
-        const vat = subtotal * 0.11;
-        const total = subtotal + vat;
+        // cart.forEach((item) => {
+        //   subtotal += Number(item.price) * Number(item.quantity);
+        // });
+        // const vat = subtotal * 0.11;
+        // const total = subtotal + vat;
+
+const{subtotal, vat, total}= calculateTotals(); // object destructuring (object returned from function
+//on js page) instead of const totals= calculatetotals(); const total=totals.total....
 
         subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
         vatEl.textContent = `$${vat.toFixed(2)}`;
         totalEl.textContent = `$${total.toFixed(2)}`;
       }
 
+
+
+
+////////////////////////////////////////////////////////////////////////
       //update cart count
 
       const cartCount = document.getElementById("cart-count");
@@ -1058,6 +1069,9 @@ footer a:hover {
         cartCount.textContent = total;
       }
 
+
+
+      //////////////////////////////////////////////////////////////////
       //empty cart
 
       const emptyCart = document.getElementById("empty-cart");
@@ -1068,11 +1082,18 @@ footer a:hover {
         renderCart();
       });
 
+
+      ////////////////////////////////////////////
+
       //page load
       document.addEventListener("DOMContentLoaded", () => {
         renderCart();
       }); //When the page loads, take what’s already in cart[] and display it.
 
+
+
+
+      //////////////////////////////////////////////////////
       // Floating Cart toggle
       const cartBtn = document.getElementById("cart-btn");
       const floatingCart = document.getElementById("floating-cart");
@@ -1085,7 +1106,12 @@ footer a:hover {
         floatingCart.classList.remove("open");
       });
 
-      // Open cart when Add to Cart clicked
+
+
+
+
+      /////////////////////////////////////////////////////////
+      // Open cart when Add to Cart clicked //only for large screens
       document.querySelectorAll(".lux-add-btn").forEach((btn) => {
         btn.addEventListener("click", () => {
           if (window.innerWidth > 768) {
@@ -1094,6 +1120,18 @@ footer a:hover {
 
         });
       });
+
+
+
+
+
+
+
+
+
+
+
+      ////////////////////////////////////////////////////////////////
 
       // Particle animation
       const canvas = document.getElementById("hero-particles");
